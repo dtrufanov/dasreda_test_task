@@ -1,0 +1,23 @@
+@import java.util
+@(brands: util.List[model.Brand])
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Brands</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+    </head>
+    <body>
+        @if(!brands.isEmpty()) {
+@*            <ul>*@
+@*                @for(brand <- brands) {*@
+@*                    <li>@{brand.toString()}</li>*@
+@*                }*@
+@*            </ul>*@
+            <h1>Users exist</h1>
+        }
+        <h2>No data</h2>
+    </body>
+</html>
