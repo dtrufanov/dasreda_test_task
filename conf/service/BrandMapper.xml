@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="service.BrandMapper">
+    <resultMap id="brandMap" type="model.Brand">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="country" column="country"/>
+    </resultMap>
+
+    <select id="getBrands" resultMap="brandMap">
+        SELECT * FROM BRAND ORDER BY id
+    </select>
+
+    <select id="getBrand" parameterType = "long" resultMap = "brandMap">
+        SELECT * FROM BRAND where id = #{id};
+    </select>
+
+    <update id = "update" parameterType = "model.Brand">
+        UPDATE BRAND SET name = #{name},
+                         country = #{country}
+        WHERE id = #{id};
+    </update>
+
+    <insert id="create" parameterType = "model.Brand" useGeneratedKeys="true" keyProperty="id">
+        INSERT into BRAND (name, country) values(#{name}, #{country});
+    </insert>
+
+
+
+    <delete id="delete" parameterType = "long">
+        DELETE FROM BRAND where id = #{id};
+    </delete>
+
+</mapper>

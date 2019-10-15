@@ -8,6 +8,8 @@ public class BrandTO {
     private String name;
     private String country;
 
+    public BrandTO(){}
+
     public BrandTO(Brand brand) {
 
         this.id = brand.getId();
@@ -37,5 +39,13 @@ public class BrandTO {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Brand toBrand() {
+        Brand brand = new Brand();
+        brand.setId(id);
+        brand.setName(name);
+        brand.setCountry(country);
+        return brand;
     }
 }

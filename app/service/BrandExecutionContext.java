@@ -5,10 +5,10 @@ import play.libs.concurrent.CustomExecutionContext;
 
 import javax.inject.Inject;
 
-public class ExecutionContext extends CustomExecutionContext {
+public class BrandExecutionContext extends CustomExecutionContext {
 
     @Inject
-    public ExecutionContext(ActorSystem actorSystem) {
+    public BrandExecutionContext(ActorSystem actorSystem) {
         super(actorSystem, "brand.repository");
     }
 }
