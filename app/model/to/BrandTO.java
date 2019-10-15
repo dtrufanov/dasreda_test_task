@@ -1,9 +1,19 @@
-package model;
+package model.to;
 
-public class Brand {
+import model.Brand;
+
+public class BrandTO {
+    private String link;
     private Long id;
     private String name;
     private String country;
+
+    public BrandTO(Brand brand) {
+
+        this.id = brand.getId();
+        this.name = brand.getName();
+        this.country = brand.getCountry();
+    }
 
     public Long getId() {
         return id;

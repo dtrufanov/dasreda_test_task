@@ -4,14 +4,13 @@
 
 <mapper namespace="service.Mapper">
     <resultMap id="brandMap" type="model.Brand">
-        <constructor>
-            <idArg column="id" javaType="Integer"/>
-            <arg column="name" javaType="String"/>
-        </constructor>
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="country" column="country"/>
     </resultMap>
 
     <select id="getBrands" resultMap="brandMap">
-        SELECT id, name FROM BRAND ORDER BY id
+        SELECT * FROM BRAND ORDER BY id
     </select>
 
 </mapper>
