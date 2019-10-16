@@ -1,0 +1,20 @@
+[
+  {
+    "link":"http://localhost:-1/brand/1",
+    "id":1,
+    "name":"Volga",
+    "country":"Russia"
+  },
+  {
+    "link":"http://localhost:-1/brand/2",
+    "id":2,
+    "name":"BMW",
+    "country":"Germany"
+  },
+  {
+    "link":"http://localhost:-1/brand/3",
+    "id":3,
+    "name":"Toyota",
+    "country":"Japan"
+  }
+]

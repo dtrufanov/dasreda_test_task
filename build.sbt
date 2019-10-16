@@ -15,5 +15,6 @@ libraryDependencies ++= Seq(
   "org.mybatis" % "mybatis-guice" % "3.6",
   //"com.google.inject.extensions" % "guice-multibindings" % "4.0",
   "com.h2database" % "h2" % "1.4.192",
-  "com.palominolabs.http" % "url-builder" % "1.1.0"
+  "com.palominolabs.http" % "url-builder" % "1.1.0",
+  "net.javacrumbs.json-unit" % "json-unit" % "1.5.2" % Test
 )
