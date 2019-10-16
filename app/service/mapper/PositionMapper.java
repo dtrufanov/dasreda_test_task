@@ -1,6 +1,7 @@
 package service.mapper;
 
 import model.Position;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,4 +11,5 @@ public interface PositionMapper extends Mapper<Position> {
     void create(Position brand);
     void update(Position brand);
     int delete(Long id);
+    List<Position> search(@Param("search") String search);
 }

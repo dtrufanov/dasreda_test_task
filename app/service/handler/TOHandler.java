@@ -18,11 +18,11 @@ public abstract class TOHandler<E extends Entity, T extends EntityTO> {
     protected HttpExecutionContext ec;
 
     public CompletionStage<Stream<T>> getAll(Http.Request request) {
-        return repository.list().thenApplyAsync(brandList -> brandList.stream().map(entity -> toEntityWithLink(request, entity)), ec.current());
+        return repository.list().thenApplyAsync(list -> list.stream().map(entity -> toEntityWithLink(request, entity)), ec.current());
     }
 
     public CompletionStage<Optional<T>> get(Http.Request request, Long id) {
-        return repository.get(id).thenApplyAsync(brandOptional -> brandOptional.map(entity -> toEntityWithLink(request, entity)), ec.current());
+        return repository.get(id).thenApplyAsync(optional -> optional.map(entity -> toEntityWithLink(request, entity)), ec.current());
     }
 
     public CompletionStage<T> create(Http.Request request, T entityTO) {
@@ -30,7 +30,7 @@ public abstract class TOHandler<E extends Entity, T extends EntityTO> {
     }
 
     public CompletionStage<Optional<T>> update(Http.Request request, T entityTO) {
-        return repository.update(getConverter().toEntity(entityTO)).thenApplyAsync(brandOptional -> brandOptional.map(entity -> toEntityWithLink(request, entity)), ec.current());
+        return repository.update(getConverter().toEntity(entityTO)).thenApplyAsync(optional -> optional.map(entity -> toEntityWithLink(request, entity)), ec.current());
     }
     public CompletionStage<Boolean> delete(Long id) {
         return repository.delete(id);
@@ -39,7 +39,7 @@ public abstract class TOHandler<E extends Entity, T extends EntityTO> {
 
     protected abstract Converter<E, T> getConverter();
 
-    private T toEntityWithLink(Http.Request request, E entity) {
+    protected T toEntityWithLink(Http.Request request, E entity) {
         T entityTO = getConverter().toTO(entity);
         setLinks(request, entityTO, entity);
         return entityTO;

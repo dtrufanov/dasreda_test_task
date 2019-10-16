@@ -9,6 +9,8 @@ import service.handler.converter.PositionConverter;
 import service.repository.PositionRepository;
 
 import javax.inject.Inject;
+import java.util.concurrent.CompletionStage;
+import java.util.stream.Stream;
 
 public class PositionTOHandler extends TOHandler<Position, PositionTO> {
     private final PositionConverter converter = new PositionConverter();
@@ -17,6 +19,12 @@ public class PositionTOHandler extends TOHandler<Position, PositionTO> {
     public PositionTOHandler(PositionRepository positionRepository, HttpExecutionContext ec) {
         this.repository = positionRepository;
         this.ec = ec;
+    }
+
+    @Override
+    public CompletionStage<Stream<PositionTO>> getAll(Http.Request request) {
+        return ((PositionRepository) repository).search(request.getQueryString("search")).thenApplyAsync(
+                positionList -> positionList.stream().map(position -> toEntityWithLink(request, position)), ec.current());
     }
 
     @Override

@@ -5,6 +5,10 @@ import service.execution.BrandExecutionContext;
 import service.mapper.PositionMapper;
 
 import javax.inject.Inject;
+import java.util.List;
+import java.util.concurrent.CompletionStage;
+
+import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 public class PositionRepository extends Repository<Position> {
 
@@ -12,5 +16,9 @@ public class PositionRepository extends Repository<Position> {
     public PositionRepository(PositionMapper positionMapper, BrandExecutionContext ec) {
         this.mapper = positionMapper;
         this.ec = ec;
+    }
+
+    public CompletionStage<List<Position>> search(String search){
+        return supplyAsync(() -> ((PositionMapper) mapper).search(search), ec);
     }
 }
