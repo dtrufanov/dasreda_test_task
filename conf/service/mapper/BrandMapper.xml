@@ -2,18 +2,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="service.BrandMapper">
+<mapper namespace="service.mapper.BrandMapper">
     <resultMap id="brandMap" type="model.Brand">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="country" column="country"/>
     </resultMap>
 
-    <select id="getBrands" resultMap="brandMap">
+    <select id="getAll" resultMap="brandMap">
         SELECT * FROM BRAND ORDER BY id
     </select>
 
-    <select id="getBrand" parameterType = "long" resultMap = "brandMap">
+    <select id="get" parameterType = "long" resultMap = "brandMap">
         SELECT * FROM BRAND where id = #{id};
     </select>
 

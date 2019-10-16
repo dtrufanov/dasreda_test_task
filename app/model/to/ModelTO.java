@@ -1,6 +1,6 @@
-package model;
+package model.to;
 
-public class Model extends Entity {
+public class ModelTO extends EntityTO {
     private String name;
     private int productionStart;
     private int productionStop;

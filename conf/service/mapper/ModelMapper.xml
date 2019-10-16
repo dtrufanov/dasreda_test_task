@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="service.mapper.ModelMapper">
+    <resultMap id="modelMap" type="model.Model">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="productionStart" column="production_start"/>
+        <result property="productionStop" column="production_stop"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="modelMap">
+        SELECT * FROM MODEL ORDER BY id
+    </select>
+
+    <select id="get" parameterType = "long" resultMap = "modelMap">
+        SELECT * FROM MODEL where id = #{id};
+    </select>
+
+    <update id = "update" parameterType = "model.Model">
+        UPDATE MODEL SET name = #{name},
+                         production_start = #{productionStart},
+                         production_stop = #{productionStop}
+        WHERE id = #{id};
+    </update>
+
+    <insert id="create" parameterType = "model.Model" useGeneratedKeys="true" keyProperty="id">
+        INSERT into MODEL (name, production_start, production_stop) values(#{name}, #{productionStart}, #{productionStop});
+    </insert>
+
+    <delete id="delete" parameterType = "long">
+        DELETE FROM MODEL where id = #{id};
+    </delete>
+
+</mapper>
