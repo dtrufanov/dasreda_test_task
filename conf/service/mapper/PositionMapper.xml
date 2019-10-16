@@ -53,7 +53,7 @@
         <if test="search != null" >
                 LEFT JOIN BRAND b ON p.brand_id = b.id
                 LEFT JOIN MODEL m ON p.model_id = m.id
-            WHERE b.name like CONCAT('%', #{search},'%') OR m.name like CONCAT('%', #{search},'%')
+            WHERE lower(b.name) like CONCAT('%', lower(#{search}),'%') OR lower(m.name) like CONCAT('%', lower(#{search}),'%')
         </if>
         ORDER BY id
     </select>
