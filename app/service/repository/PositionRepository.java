@@ -1,7 +1,7 @@
 package service.repository;
 
 import model.Position;
-import service.execution.BrandExecutionContext;
+import service.execution.PositionExecutionContext;
 import service.mapper.PositionMapper;
 
 import javax.inject.Inject;
@@ -13,7 +13,7 @@ import static java.util.concurrent.CompletableFuture.supplyAsync;
 public class PositionRepository extends Repository<Position> {
 
     @Inject
-    public PositionRepository(PositionMapper positionMapper, BrandExecutionContext ec) {
+    public PositionRepository(PositionMapper positionMapper, PositionExecutionContext ec) {
         this.mapper = positionMapper;
         this.ec = ec;
     }

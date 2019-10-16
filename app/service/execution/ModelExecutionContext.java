@@ -9,6 +9,6 @@ public class ModelExecutionContext extends CustomExecutionContext {
 
     @Inject
     public ModelExecutionContext(ActorSystem actorSystem) {
-        super(actorSystem, "brand.repository");
+        super(actorSystem, "model.repository");
     }
 }
