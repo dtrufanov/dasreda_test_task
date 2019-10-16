@@ -15,5 +15,11 @@ PUT     /model/:id                 controllers.ModelController.update(request:Re
 DELETE  /model/:id                 controllers.ModelController.delete(id)
 POST    /model                     controllers.ModelController.create(request:Request)
 
+GET     /position                  controllers.PositionController.getAll(request:Request)
+GET     /position/:id              controllers.PositionController.get(request:Request, id)
+PUT     /position/:id                 controllers.PositionController.update(request:Request, id)
+DELETE  /position/:id                 controllers.PositionController.delete(id)
+POST    /position                     controllers.PositionController.create(request:Request)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

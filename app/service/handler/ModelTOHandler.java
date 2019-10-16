@@ -3,12 +3,15 @@ package service.handler;
 import model.Model;
 import model.to.ModelTO;
 import play.libs.concurrent.HttpExecutionContext;
+import service.handler.converter.Converter;
+import service.handler.converter.ModelConverter;
 import service.repository.ModelRepository;
 
 import javax.inject.Inject;
 
 
 public class ModelTOHandler extends TOHandler<Model, ModelTO> {
+    private final ModelConverter converter = new ModelConverter();
 
     @Inject
     public ModelTOHandler(ModelRepository modelRepository, HttpExecutionContext ec) {
@@ -17,22 +20,7 @@ public class ModelTOHandler extends TOHandler<Model, ModelTO> {
     }
 
     @Override
-    protected Model toEntity(ModelTO to) {
-        Model model = new Model();
-        model.setId(to.getId());
-        model.setName(to.getName());
-        model.setProductionStart(to.getProductionStart());
-        model.setProductionStop(to.getProductionStop());
-        return model;
-    }
-
-    @Override
-    protected ModelTO toTO(Model model) {
-        ModelTO to = new ModelTO();
-        to.setId(model.getId());
-        to.setName(model.getName());
-        to.setProductionStart(model.getProductionStart());
-        to.setProductionStop(model.getProductionStop());
-        return to;
+    protected Converter<Model, ModelTO> getConverter() {
+        return converter;
     }
 }

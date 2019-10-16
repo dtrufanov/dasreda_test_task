@@ -5,6 +5,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import play.db.Database;
 import service.mapper.BrandMapper;
 import service.mapper.ModelMapper;
+import service.mapper.PositionMapper;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -23,6 +24,7 @@ public class MyBatisModule extends org.mybatis.guice.MyBatisModule {
         bindTransactionFactoryType(JdbcTransactionFactory.class);
         addMapperClass(BrandMapper.class);
         addMapperClass(ModelMapper.class);
+        addMapperClass(PositionMapper.class);
     }
 
     /* Provides a {@link DataSource} from the {@link Database} which can be injected from Play. */

@@ -1,25 +1,25 @@
 package model.to;
 
 public class PositionTO extends EntityTO {
-    private String brand;
-    private String model;
+    private BrandTO brand;
+    private ModelTO model;
     private int yearOfIssue;
     private int mileage;
     private int price;
 
-    public String getBrand() {
+    public BrandTO getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(BrandTO brand) {
         this.brand = brand;
     }
 
-    public String getModel() {
+    public ModelTO getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(ModelTO model) {
         this.model = model;
     }
 

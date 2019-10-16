@@ -3,11 +3,15 @@ package service.handler;
 import model.Brand;
 import model.to.BrandTO;
 import play.libs.concurrent.HttpExecutionContext;
+import service.handler.converter.BrandConverter;
+import service.handler.converter.Converter;
 import service.repository.BrandRepository;
 
 import javax.inject.Inject;
 
 public class BrandTOHandler extends TOHandler<Brand, BrandTO> {
+    private final BrandConverter converter = new BrandConverter();
+
 
     @Inject
     public BrandTOHandler(BrandRepository brandRepository, HttpExecutionContext ec) {
@@ -16,21 +20,7 @@ public class BrandTOHandler extends TOHandler<Brand, BrandTO> {
     }
 
     @Override
-    protected Brand toEntity(BrandTO to) {
-        Brand brand = new Brand();
-        brand.setId(to.getId());
-        brand.setName(to.getName());
-        brand.setCountry(to.getCountry());
-        return brand;
+    protected Converter<Brand, BrandTO> getConverter() {
+        return converter;
     }
-
-    @Override
-    protected BrandTO toTO(Brand brand) {
-        BrandTO to = new BrandTO();
-        to.setId(brand.getId());
-        to.setName(brand.getName());
-        to.setCountry(brand.getCountry());
-        return to;
-    }
-
 }

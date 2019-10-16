@@ -26,16 +26,17 @@ public abstract class Repository<E extends Entity> {
     public CompletionStage<E> create(E entity) {
         return supplyAsync(() -> {
             mapper.create(entity);
-            return mapper.get(entity.getId());
-        }, ec);
+            return entity.getId();
+        }, ec).thenApplyAsync(id -> mapper.get(entity.getId()), ec);
     }
 
 
     public CompletionStage<Optional<E>> update(E entity) {
         return supplyAsync(() -> {
             mapper.update(entity);
-            return Optional.ofNullable(mapper.get(entity.getId()));
-        }, ec);
+            return entity.getId();
+        }, ec).thenApplyAsync(id -> Optional.ofNullable(mapper.get(entity.getId())), ec);
+
     }
 
     public CompletionStage<Boolean> delete(Long id) {

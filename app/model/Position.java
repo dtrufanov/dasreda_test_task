@@ -1,20 +1,11 @@
 package model;
 
-public class Position {
-    private Long id;
+public class Position extends Entity {
     private Brand brand;
     private Model model;
     private int yearOfIssue;
     private int mileage;
     private int price;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Brand getBrand() {
         return brand;
